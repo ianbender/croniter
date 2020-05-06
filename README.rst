@@ -53,6 +53,11 @@ A simple example::
     >>> iter = croniter('0 0 * * sat#1,sun#2', base)
     >>> print(iter.get_next(datetime))   # datetime.datetime(2010, 2, 6, 0, 0)
 
+    >>> iter = croniter('59 23 L * *', base)  # 23:59 on last day of the month
+    >>> print(iter.get_next(datetime))  2010-01-31 23:59:00
+    >>> print(iter.get_next(datetime))  2010-02-28 23:59:00
+    >>> print(iter.get_next(datetime))  2010-03-31 23:59:00
+
 All you need to know is how to use the constructor and the ``get_next``
 method, the signature of these methods are listed below::
 
